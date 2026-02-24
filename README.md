@@ -1,7 +1,7 @@
 # 🌌 Omniverse Weather Engine
 
 Omniverse Weather Engine is an advanced, glassmorphism-style weather dashboard built with HTML, CSS, and vanilla JavaScript.[web:17][web:19][web:21]  
-It combines live weather, 5‑day forecast, AQI & UV, interactive Leaflet maps, Chart.js analytics, AI-style guidance, favorites, city comparison, and a 3D omniverse background powered by Three.js.[web:17][web:20][web:23][web:26]
+It combines live weather, 5‑day forecast, AQI & UV, interactive Leaflet maps, Chart.js analytics, AI-style guidance, favorites, city comparison, and a 3D omniverse background powered by Three.js
 
 > Built by Sameer Ahmed.
 
