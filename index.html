@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Omniverse Weather Engine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Omniverse 3D background -->
+    <canvas id="bg"></canvas>
+
+    <div class="ui app">
+        <h1>🌌 Omniverse Weather Engine</h1>
+        <p>Live weather, AI tips, analytics, and comparisons</p>
+
+        <!-- Smart alert banner -->
+        <div id="alertBanner" class="alert-banner" style="display:none;"></div>
+
+        <!-- Search + controls -->
+        <div class="card">
+            <input id="cityInput" placeholder="Enter city name">
+            <button onclick="searchWeather()">Search</button>
+            <button onclick="startVoice()">🎤</button>
+            <button id="unitToggle" onclick="toggleUnit()">Switch to °F</button>
+            <button onclick="addFavoriteCity()">⭐ Add to favorites</button>
+            <button onclick="toggleCompareMode()">Compare cities</button>
+
+            <p id="loading" style="display:none;">Fetching Omniverse weather…</p>
+            <p id="error" class="error"></p>
+
+            <!-- Favorites bar -->
+            <div id="favoritesBar" class="favorites-bar"></div>
+        </div>
+
+        <!-- Compare section -->
+        <div class="card" id="compareCard" style="display:none;">
+            <h3>Compare Two Cities</h3>
+            <div class="compare-inputs">
+                <input id="compareCity1" placeholder="City A">
+                <input id="compareCity2" placeholder="City B">
+                <button onclick="compareCities()">Compare</button>
+            </div>
+            <div id="compareResult" class="compare-result"></div>
+        </div>
+
+        <!-- Current weather -->
+        <div class="card">
+            <h2 id="cityName">City</h2>
+            <p id="temperature" class="temp-main">--</p>
+            <p id="description">Description</p>
+            <p id="aqi">Air Quality Index: --</p>
+            <p id="uv">UV Index: --</p>
+            <p id="lastUpdated">Last updated: --</p>
+        </div>
+
+        <!-- Extra details -->
+        <div class="card">
+            <h3>Details</h3>
+            <div id="details" class="details-grid">
+                <!-- filled by JS -->
+            </div>
+        </div>
+
+        <!-- AI Advice -->
+        <div class="card">
+            <h3>🧠 AI Weather Advice</h3>
+            <div id="aiAdvice" class="ai-advice">
+                Tips will appear here.
+            </div>
+            <p id="aiMood" class="ai-mood">Mood & clothing tips here.</p>
+            <p id="aiAllergy" class="ai-allergy">Allergy note here.</p>
+            <p id="aiSummary" class="ai-summary">Weather summary will appear here.</p>
+        </div>
+
+        <!-- Rotating tips -->
+        <div class="card">
+            <h3>💡 Weather Tips</h3>
+            <p id="rotatingTips">Tips will rotate here.</p>
+        </div>
+
+        <!-- Hourly strip -->
+        <div class="card">
+            <h3>Next 24 Hours (Hourly)</h3>
+            <div id="hourlyStrip" class="hourly-strip"></div>
+        </div>
+
+        <!-- Charts -->
+        <div class="card">
+            <h3>Next 24 Hours (Temperature)</h3>
+            <canvas id="tempChart"></canvas>
+        </div>
+
+        <div class="card">
+            <h3>Next 24 Hours (Wind & Humidity)</h3>
+            <canvas id="windHumChart"></canvas>
+        </div>
+
+        <!-- Forecast grid -->
+        <div class="card">
+            <h3>5‑Day Forecast</h3>
+            <div id="forecastGrid" class="forecast-grid"></div>
+        </div>
+
+        <!-- Map -->
+        <div class="card">
+            <h3>Location Map (click anywhere to explore)</h3>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+

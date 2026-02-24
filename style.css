@@ -1,0 +1,319 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a2a6c, #000000 60%);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Omniverse 3D background */
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Main UI container */
+.ui {
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(35px);
+    background: rgba(0,0,0,0.55);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.9);
+}
+
+.app {
+    text-align: center;
+}
+
+/* Glass cards with animation */
+.card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.card--updating {
+    opacity: 0.8;
+    transform: translateY(2px);
+}
+
+/* Inputs & buttons */
+input, button {
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    margin: 5px 4px;
+    font-size: 0.95rem;
+}
+
+input {
+    min-width: 180px;
+    outline: none;
+}
+
+/* Tactile buttons */
+button {
+    background: linear-gradient(135deg, rgba(0,255,204,0.25), rgba(0,153,255,0.25));
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    background: linear-gradient(135deg, rgba(0,255,204,0.5), rgba(0,153,255,0.5));
+}
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+
+/* Favorites */
+.favorites-bar {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.fav-btn {
+    padding: 6px 12px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+.fav-btn:hover {
+    background: rgba(0,255,204,0.35);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.5);
+}
+
+/* Current temp with pulse */
+.temp-main {
+    font-size: 3rem;
+    margin: 10px 0 0 0;
+    transition: transform 0.2s ease;
+}
+.temp-main--pulse {
+    transform: scale(1.05);
+}
+
+/* Forecast grid */
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 10px;
+}
+
+.forecast-item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.forecast-item img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Map */
+#map {
+    height: 300px;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+
+/* Chart */
+canvas {
+    max-width: 100%;
+    margin: 10px auto 0 auto;
+}
+
+/* AI Advice */
+.ai-advice {
+    color: #00ffcc;
+    font-weight: 500;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.ai-summary {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+.ai-mood {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #ffdd88;
+}
+
+.ai-allergy {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #ffb3b3;
+}
+
+/* AQI / UV / last updated */
+#aqi {
+    color: orange;
+}
+#uv,
+#lastUpdated {
+    font-size: 0.85rem;
+    color: #dddddd;
+    margin-top: 4px;
+}
+
+/* Error */
+.error {
+    color: #ff6b6b;
+}
+
+/* Alert banner */
+.alert-banner {
+    padding: 10px 15px;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+
+/* Hourly strip */
+.hourly-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.hourly-item {
+    min-width: 80px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 0.8rem;
+    text-align: center;
+    border-top: 2px solid #00ffcc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+.hourly-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+}
+
+.hourly-item img {
+    width: 35px;
+    height: 35px;
+}
+
+/* Extra details */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.detail-item {
+    background: rgba(255,255,255,0.06);
+    padding: 8px 10px;
+    border-radius: 10px;
+    border-left: 2px solid #00ffcc;
+}
+
+/* compare card */
+.compare-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.compare-inputs input {
+    min-width: 150px;
+}
+
+.compare-result {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Rotating tips */
+#rotatingTips {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .ui {
+        margin: 20px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 700px) {
+    .forecast-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .details-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 450px) {
+    .forecast-grid {
+        grid-template-columns: 1fr;
+    }
+    .temp-main {
+        font-size: 2.5rem;
+    }
+}
+
+/* Extra mobile padding and headings */
+@media (max-width: 400px) {
+    .ui {
+        margin: 10px;
+        padding: 12px;
+    }
+    h1 {
+        font-size: 1.4rem;
+    }
+    .card {
+        padding: 14px;
+    }
+}
+
+
+
+
