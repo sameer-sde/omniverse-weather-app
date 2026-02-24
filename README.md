@@ -7,6 +7,13 @@ It combines live weather, 5‑day forecast, AQI & UV, interactive Leaflet maps, 
 
 ---
 
+## 🔗 Live Demo
+
+Try the app here:  
+https://sameer-sde.github.io/omniverse-weather-app/
+
+---
+
 ## ✨ Key Features
 
 - City search with Enter key support and loading state.
